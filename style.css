@@ -29,30 +29,32 @@ html.locked, html.locked body {
 }
 
 body {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Poppins', sans-serif;
   background: var(--cream);
   color: var(--ink);
-  font-size: 19px;
-  line-height: 1.6;
+  font-size: 17px;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
 
 /* Common text utilities */
 .eyebrow {
-  font-family: 'EB Garamond', serif;
-  letter-spacing: 0.32em;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  font-size: 12.5px;
+  font-size: 11px;
+  font-weight: 500;
   color: var(--gold);
-  font-style: italic;
+  font-style: normal;
 }
 .eyebrow.light {
   color: var(--gold-soft);
 }
 
 h1, h2, h3 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.08em;
   color: var(--rosewood);
 }
 
@@ -126,7 +128,7 @@ h1, h2, h3 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 7% 8%;
+  padding: 7% 8% 9%;
 }
 
 .cover-panel.left-panel {
@@ -153,44 +155,50 @@ h1, h2, h3 {
 }
 
 .cover-verse {
-  font-family: 'EB Garamond', serif;
+  font-family: 'Poppins', sans-serif;
   font-style: italic;
+  font-weight: 300;
   color: rgba(243, 228, 201, 0.92);
-  font-size: 13.5px;
-  letter-spacing: 0.04em;
-  line-height: 1.5;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  line-height: 1.7;
   max-width: 220px;
 }
 
 .cover-verse-ref {
   display: block;
   margin-top: 4px;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
   font-style: normal;
-  font-size: 10.5px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 9px;
   color: rgba(197, 160, 89, 0.8);
 }
 
 .cover-name-row {
-  margin-top: auto;
-  padding-top: 32px;
+  padding-top: 0;
 }
 
 .cover-name-row .n {
-  font-family: 'Great Vibes', cursive;
-  font-size: 44px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 40px;
   color: #F3E4C9;
   line-height: 1;
+  letter-spacing: 0.02em;
 }
 
 .cover-name-row .r {
-  font-family: 'EB Garamond', serif;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  font-size: 10px;
+  font-size: 9px;
   color: rgba(197, 160, 89, 0.75);
-  margin-top: 6px;
+  margin-top: 8px;
 }
 
 /* Centre tap button */
@@ -235,8 +243,9 @@ h1, h2, h3 {
   color: rgba(243, 228, 201, 0.85);
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  font-size: 11px;
-  font-family: 'EB Garamond', serif;
+  font-size: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
   animation: floatY 2.4s ease-in-out infinite;
 }
 
@@ -278,10 +287,11 @@ h1, h2, h3 {
   background: rgba(42, 7, 15, 0.65);
   border: 1px solid rgba(197, 160, 89, 0.55);
   color: rgba(243, 228, 201, 0.9);
-  font-family: 'EB Garamond', serif;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 10px;
   padding: 10px 20px;
   cursor: pointer;
   backdrop-filter: blur(6px);
@@ -344,35 +354,42 @@ section {
 }
 
 .hero-verse {
-  font-family: 'EB Garamond', serif;
+  font-family: 'Poppins', sans-serif;
   font-style: italic;
+  font-weight: 300;
   color: var(--ink-soft);
-  max-width: 480px;
-  font-size: 18px;
-  line-height: 1.7;
+  max-width: 500px;
+  font-size: 16px;
+  line-height: 1.8;
   margin: 6px 0 4px;
 }
 
 .hero-verse-ref {
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  font-size: 11px;
+  font-size: 10px;
+  font-weight: 500;
   color: var(--gold);
   font-style: normal;
 }
 
 .hero-names {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(52px, 11vw, 92px);
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: clamp(28px, 6vw, 52px);
+  letter-spacing: 0.06em;
   color: var(--rosewood);
-  line-height: 1.05;
+  line-height: 1.2;
   margin: 26px 0 10px;
 }
 
 .hero-date {
-  letter-spacing: 0.35em;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  font-size: 13px;
+  font-size: 12px;
+  font-weight: 400;
   color: var(--ink-soft);
   margin-top: 4px;
 }
@@ -380,8 +397,9 @@ section {
 .hero-tag {
   margin-top: 22px;
   font-style: italic;
+  font-weight: 300;
   color: var(--rosewood-soft);
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .scroll-cue {
@@ -427,10 +445,13 @@ section {
 }
 
 .countdown h2 {
-  font-size: clamp(30px, 6vw, 50px);
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(28px, 6vw, 48px);
+  letter-spacing: 0.02em;
   color: #F3E4C9;
   margin: 8px 0 30px;
-  font-style: italic;
 }
 
 .countdown-grid {
@@ -467,15 +488,19 @@ section {
 }
 
 .cnum {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(30px, 6vw, 44px);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: clamp(28px, 6vw, 42px);
+  letter-spacing: 0.04em;
   color: #F3E4C9;
 }
 
 .clabel {
-  letter-spacing: 0.28em;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  font-size: 10.5px;
+  font-size: 10px;
   color: rgba(243, 228, 201, 0.65);
   margin-top: 6px;
 }
@@ -487,9 +512,12 @@ section {
 }
 
 .invite-lead {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
   max-width: 560px;
   margin: 0 auto 40px;
-  font-size: 19px;
+  font-size: 15px;
+  line-height: 1.9;
   color: var(--ink);
 }
 
@@ -547,29 +575,36 @@ section {
 }
 
 .couple-col .role {
-  letter-spacing: 0.3em;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  font-size: 11px;
+  font-size: 10px;
   color: var(--gold);
   margin-bottom: 10px;
 }
 
 .couple-col .name {
-  font-family: 'Playfair Display', serif;
-  font-size: 30px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: clamp(22px, 4vw, 28px);
+  letter-spacing: 0.1em;
   color: var(--rosewood);
 }
 
 .couple-col .parents {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
   color: var(--ink-soft);
   margin-top: 8px;
-  font-size: 16.5px;
-  line-height: 1.6;
+  font-size: 14px;
+  line-height: 1.8;
 }
 
 .parents strong {
-  color: var(--ink);
+  font-family: 'Poppins', sans-serif;
   font-weight: 600;
+  color: var(--ink);
 }
 
 .amp {
@@ -596,8 +631,11 @@ section {
 }
 
 .events h2 {
-  font-family: 'Great Vibes', cursive;
-  font-size: 48px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(30px, 5vw, 46px);
+  letter-spacing: 0.02em;
   margin-top: 6px;
 }
 
@@ -619,15 +657,19 @@ section {
 }
 
 .card .tag {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  font-size: 11px;
+  font-size: 10px;
   color: var(--gold);
 }
 
 .card h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 26px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: clamp(20px, 3.5vw, 24px);
+  letter-spacing: 0.08em;
   color: var(--rosewood);
   margin: 6px 0 18px;
 }
@@ -658,15 +700,19 @@ section {
 }
 
 .card-row .t1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 0.02em;
   color: var(--ink);
 }
 
 .card-row .t2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
   font-style: italic;
   color: var(--ink-soft);
-  font-size: 15.5px;
+  font-size: 13.5px;
 }
 
 /* VENUE */
@@ -676,8 +722,11 @@ section {
 }
 
 .venue h2 {
-  font-family: 'Great Vibes', cursive;
-  font-size: 48px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(30px, 5vw, 46px);
+  letter-spacing: 0.02em;
   margin-top: 6px;
 }
 
@@ -690,24 +739,29 @@ section {
 }
 
 .venue-tag {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  font-size: 11px;
+  font-size: 10px;
   color: var(--gold);
 }
 
 .venue-name {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.1em;
   color: var(--rosewood-soft);
-  font-size: clamp(30px, 5vw, 44px);
+  font-size: clamp(22px, 4vw, 32px);
   margin: 12px 0 6px;
 }
 
 .venue-addr {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
   font-style: italic;
   color: var(--ink-soft);
-  font-size: 17px;
+  font-size: 14px;
 }
 
 .venue-map {
@@ -753,10 +807,11 @@ section {
   border: 1px solid var(--gold);
   color: var(--rosewood);
   text-decoration: none;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  font-size: 12px;
-  font-family: 'EB Garamond', serif;
+  font-size: 11px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
   transition: all .25s ease;
   background: transparent;
   cursor: pointer;
@@ -776,17 +831,22 @@ section {
 }
 
 .rsvp h2 {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(40px, 8vw, 60px);
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(30px, 6vw, 50px);
+  letter-spacing: 0.02em;
   color: #F3E4C9;
   margin: 6px 0 12px;
 }
 
 .rsvp-lead {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
   color: rgba(243, 228, 201, 0.85);
   font-style: italic;
   margin-bottom: 30px;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .rsvp-card {
@@ -807,13 +867,13 @@ section {
 
 .rsvp-form label {
   display: block;
-  font-family: 'EB Garamond', serif;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 10px;
   color: var(--gold);
   margin-bottom: 6px;
-  font-weight: 600;
 }
 
 .rsvp-form input,
@@ -824,8 +884,9 @@ section {
   border: 1px solid var(--divider);
   background: #FFF;
   color: var(--ink);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 17px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
   border-radius: 3px;
   outline: none;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
@@ -844,10 +905,11 @@ section {
   background: var(--rosewood);
   color: #FFF;
   border: 1px solid var(--rosewood);
-  font-family: 'EB Garamond', serif;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  font-size: 13px;
+  font-size: 11px;
   cursor: pointer;
   border-radius: 3px;
   transition: all 0.25s ease;
@@ -872,14 +934,18 @@ section {
 }
 
 .rsvp-success h3 {
-  font-family: 'Great Vibes', cursive;
-  font-size: 42px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 32px;
+  letter-spacing: 0.1em;
   color: var(--rosewood);
   margin-bottom: 10px;
 }
 
 .rsvp-success p {
-  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
   color: var(--ink-soft);
   font-style: italic;
   margin-bottom: 24px;
@@ -891,10 +957,11 @@ section {
   background: transparent;
   border: 1px solid var(--gold);
   color: var(--rosewood);
-  font-family: 'EB Garamond', serif;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  font-size: 11px;
+  font-size: 10px;
   cursor: pointer;
   border-radius: 2px;
   transition: all 0.25s ease;
@@ -1082,10 +1149,12 @@ section {
 }
 
 .photo-caption {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
   color: #F8ECE0;
   font-style: italic;
-  font-size: 19px;
-  letter-spacing: 0.03em;
+  font-size: 15px;
+  letter-spacing: 0.06em;
   background: rgba(42, 7, 15, 0.45);
   border: 1px solid rgba(230, 203, 179, 0.45);
   padding: 22px 34px;
@@ -1096,8 +1165,10 @@ section {
 }
 
 .photo-caption .amp2 {
-  font-family: 'Great Vibes', cursive;
-  font-size: 30px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 22px;
+  letter-spacing: 0.15em;
   display: block;
   margin-top: 6px;
   color: #F3E4C9;
@@ -1112,24 +1183,32 @@ section {
 }
 
 .closing .names {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(48px, 10vw, 80px);
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(36px, 8vw, 64px);
+  letter-spacing: 0.02em;
   color: #F3E4C9;
   margin: 16px 0 10px;
 }
 
 .closing .date {
-  letter-spacing: 0.3em;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  font-size: 13px;
+  font-size: 11px;
   color: rgba(243, 228, 201, 0.7);
 }
 
 .closing .msg {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
   font-style: italic;
   color: #F3E4C9;
   margin: 34px 0 6px;
-  font-size: 19px;
+  font-size: 15px;
+  line-height: 1.9;
 }
 
 .sharing-happiness {
@@ -1140,8 +1219,9 @@ section {
 }
 
 .sharing-title {
-  font-family: 'EB Garamond', serif;
-  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 10px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--gold-soft);
@@ -1149,24 +1229,30 @@ section {
 }
 
 .sharing-names {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
   font-style: italic;
-  font-size: 20px;
+  font-size: 18px;
+  letter-spacing: 0.06em;
   color: #F3E4C9;
 }
 
 .closing .tag {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
   font-style: italic;
   color: var(--gold-soft);
-  font-size: 20px;
+  font-size: 16px;
+  letter-spacing: 0.06em;
   margin-top: 30px;
 }
 
 .closing .foot {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
   margin-top: 42px;
   letter-spacing: 0.2em;
-  font-size: 11px;
+  font-size: 10px;
   color: rgba(243, 228, 201, 0.55);
   text-transform: uppercase;
 }
