@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Sanju &amp; Mary | December 2026</title>
+  <meta name="description"
+    content="Together with our families, Mr. Regi Thomas & Mrs. Hepsy Regi Thomas and Mr. Thomas Mathew & Mrs. Sheela Thomas invite you to the wedding celebration of Sanju Jacob Thomas and Pretty Mary Thomas on 27th December 2026.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sanju &amp; Pretty Mary — Wedding Invitation">
+  <meta property="og:description"
+    content="Wedding: 27th Dec 2026 @ St. Thomas Orthodox Church, Kundara (Valiyapally) & Reception @ Vismaya Convention Centre, Mulavana. 'I will make a partner suitable for him.' — Genesis 2:18">
+  <meta property="og:image" content="https://sanju-mary.vercel.app/og.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:url" content="https://sanju-mary.vercel.app/">
+  <meta name="twitter:image" content="https://sanju-mary.vercel.app/og.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=EB+Garamond:ital@0;1&display=swap"
+    rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Background music (autoplay, loop) -->
+  <audio id="bg-music" loop>
+    <source src="music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Mute / Unmute button — fixed bottom-left, always visible -->
+  <button id="mute-btn" aria-label="Toggle music" title="Toggle music">
+    <svg id="icon-sound" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+      <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+    </svg>
+    <svg id="icon-muted" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+      <line x1="23" y1="9" x2="17" y2="15"></line>
+      <line x1="17" y1="9" x2="23" y2="15"></line>
+    </svg>
+  </button>
+
+  <!-- SVG defs for gold gradient used by cross icons -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <linearGradient id="crossGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#FBECE9" />
+        <stop offset="50%" stop-color="#C5A059" />
+        <stop offset="100%" stop-color="#6B1D2F" />
+      </linearGradient>
+      <linearGradient id="crossGradDark" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#8C2D43" />
+        <stop offset="100%" stop-color="#420D18" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- ============ COVER / OPENING ANIMATION ============ -->
+  <div id="cover">
+    <div class="fold left">
+      <div class="cover-top">
+        <div class="cover-arabic">℣</div>
+        <p class="cover-verse">“I will make a partner suitable for him.”
+          <span class="cover-verse-ref">Genesis 2:18</span>
+        </p>
+      </div>
+      <div class="cover-bottom">
+        <div class="cover-name text-right">
+          <div class="n">Sanju</div>
+          <div class="r">The Groom</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cover-center" id="tapToOpen">
+      <div class="seal">
+        <!-- Interlocked wedding rings -->
+        <svg viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:62px;height:38px;">
+          <defs>
+            <linearGradient id="ringGold1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#F0D878" />
+              <stop offset="50%" stop-color="#C39A3E" />
+              <stop offset="100%" stop-color="#9A7428" />
+            </linearGradient>
+            <linearGradient id="ringGold2" x1="1" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#F0D878" />
+              <stop offset="50%" stop-color="#DCC07E" />
+              <stop offset="100%" stop-color="#A07830" />
+            </linearGradient>
+            <!-- clip left ring so it appears behind right ring at overlap -->
+            <clipPath id="clipLeft">
+              <rect x="0" y="0" width="38" height="40" />
+            </clipPath>
+            <!-- clip right ring so it appears in front at overlap -->
+            <clipPath id="clipRight">
+              <rect x="26" y="0" width="38" height="40" />
+            </clipPath>
+          </defs>
+
+          <!-- Left ring (behind) — clipped to left side -->
+          <g clip-path="url(#clipLeft)">
+            <circle cx="24" cy="20" r="14.5" stroke="url(#ringGold1)" stroke-width="4" fill="none" />
+          </g>
+          <!-- Right ring (front) — full -->
+          <circle cx="40" cy="20" r="14.5" stroke="url(#ringGold2)" stroke-width="4" fill="none" />
+          <!-- Left ring front arc (overlapping portion in front) -->
+          <g clip-path="url(#clipRight)">
+            <circle cx="24" cy="20" r="14.5" stroke="url(#ringGold1)" stroke-width="4" fill="none" />
+          </g>
+
+          <!-- Small diamond on left ring top -->
+          <polygon points="24,3.5 26,6 24,8.5 22,6" fill="#F3E4C9" opacity="0.95" />
+          <polygon points="24,3.5 26,6 24,8.5 22,6" fill="none" stroke="rgba(195,154,62,0.6)" stroke-width="0.5" />
+        </svg>
+      </div>
+      <div class="tap-label">Tap to open</div>
+    </div>
+
+    <div class="fold right">
+      <div class="cover-top" style="visibility:hidden">
+        <div class="cover-arabic">℣</div>
+        <p class="cover-verse">placeholder</p>
+      </div>
+      <div class="cover-bottom">
+        <div class="cover-name">
+          <div class="n">Mary</div>
+          <div class="r">The Bride</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ MAIN CONTENT ============ -->
+  <main id="main">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-cross">
+        <img src="dove.png" alt="Two doves emblem" style="width:160px; height:auto; display:block; margin:0 auto;">
+      </div>
+      <p class="hero-verse">“I will make a partner suitable for him.”<br>
+        <span class="hero-verse-ref">— Genesis 2:18</span>
+      </p>
+      <h1 class="hero-names">Sanju Jacob Thomas &amp; Pretty Mary Thomas</h1>
+      <div class="hero-date">Sunday, 27th December 2026</div>
+      <p class="hero-tag">are uniting in Holy Matrimony, and we request your presence &amp; blessings</p>
+      <div class="scroll-cue"><span>Scroll</span>
+        <div class="chev"></div>
+      </div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section class="countdown">
+      <div class="eyebrow light">Counting Down</div>
+      <h2>Until We Say &ldquo;I Do&rdquo;</h2>
+      <div class="divider light"><span class="line"></span><span class="gem"></span><span class="line"></span></div>
+      <div class="countdown-grid" id="countdown">
+        <div class="cbox">
+          <div class="cnum" id="cd-days">00</div>
+          <div class="clabel">Days</div>
+        </div>
+        <div class="cbox">
+          <div class="cnum" id="cd-hours">00</div>
+          <div class="clabel">Hours</div>
+        </div>
+        <div class="cbox">
+          <div class="cnum" id="cd-mins">00</div>
+          <div class="clabel">Minutes</div>
+        </div>
+        <div class="cbox">
+          <div class="cnum" id="cd-secs">00</div>
+          <div class="clabel">Seconds</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INVITATION -->
+    <section class="invite">
+      <div class="eyebrow">With Joyful Hearts</div>
+      <div class="divider"><span class="line"></span><span class="gem"></span><span class="line"></span></div>
+      <p class="invite-lead">Together with our beloved parents and families, we joyfully solicit your esteemed presence
+        and blessings on the auspicious occasion of our wedding celebration.</p>
+
+      <div class="couple-row">
+        <!-- Groom -->
+        <div class="couple-col">
+          <div class="role">The Groom</div>
+          <div class="name">Sanju Jacob Thomas</div>
+          <div class="parents">
+            Son of <strong>Mr. Regi Thomas &amp; Mrs. Hepsy Regi Thomas</strong><br>
+            Pallathusseril Palm grove,<br>
+            Elampallore, Kundara
+          </div>
+        </div>
+        <div class="amp">&amp;</div>
+        <!-- Bride -->
+        <div class="couple-col">
+          <div class="role">The Bride</div>
+          <div class="name">Pretty Mary Thomas</div>
+          <div class="parents">
+            Daughter of <strong>Mr. Thomas Mathew &amp; Mrs. Sheela Thomas</strong><br>
+            Moorthitta Nithosh Bhavan,<br>
+            Pavukkara, Mannar
+          </div>
+        </div>
+      </div>
+
+      <p class="invite-note">Your prayers and gracious presence on this beautiful day will make our celebration truly
+        complete.</p>
+    </section>
+
+    <!-- EVENTS -->
+    <section class="events">
+      <div class="eyebrow">Celebrations</div>
+      <h2>Events</h2>
+      <div class="divider"><span class="line"></span><span class="gem"></span><span class="line"></span></div>
+
+      <div class="cards">
+        <!-- Wedding Card -->
+        <div class="card">
+          <div class="tag">Holy Matrimony</div>
+          <h3>Wedding Ceremony</h3>
+          <div class="card-row">
+            <span class="ic"><i data-lucide="calendar-days"></i></span>
+            <div>
+              <div class="t1">27th December 2026 — Sunday</div>
+              <div class="t2">at 11:00 AM</div>
+            </div>
+          </div>
+          <div class="card-row">
+            <span class="ic"><i data-lucide="map-pin"></i></span>
+            <div>
+              <div class="t1">St. Thomas Orthodox Church</div>
+              <div class="t2">Kundara (Valiyapally)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reception Card -->
+        <div class="card">
+          <div class="tag">Reception</div>
+          <h3>Wedding Reception</h3>
+          <div class="card-row">
+            <span class="ic"><i data-lucide="calendar-days"></i></span>
+            <div>
+              <div class="t1">27th December 2026 — Sunday</div>
+              <div class="t2">Following Ceremony</div>
+            </div>
+          </div>
+          <div class="card-row">
+            <span class="ic"><i data-lucide="map-pin"></i></span>
+            <div>
+              <div class="t1">Vismaya Convention Centre</div>
+              <div class="t2">Mulavana, Kundara</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VENUE -->
+    <section class="venue">
+      <div class="eyebrow">Where To Find Us</div>
+      <h2>Venues</h2>
+      <div class="divider"><span class="line"></span><span class="gem"></span><span class="line"></span></div>
+
+      <!-- Wedding Venue Card -->
+      <div class="venue-card">
+        <div class="venue-tag">✦ Wedding Ceremony Venue ✦</div>
+        <div class="venue-name">St. Thomas Orthodox Church</div>
+        <div class="venue-addr">Kundara (Valiyapally), Kollam, Kerala</div>
+        <div class="venue-map">
+          <a href="https://maps.app.goo.gl/BAikkwzT7AKQpUUw5?g_st=ac" target="_blank" rel="noopener">
+            <img src="map1.png" alt="St. Thomas Orthodox Church Map" loading="lazy">
+          </a>
+        </div>
+        <a class="venue-btn" href="https://maps.app.goo.gl/BAikkwzT7AKQpUUw5?g_st=ac" target="_blank" rel="noopener">
+          <i data-lucide="map-pin"></i> Open in Google Maps
+        </a>
+      </div>
+
+      <!-- Reception Venue Card -->
+      <div class="venue-card">
+        <div class="venue-tag">✦ Reception Venue ✦</div>
+        <div class="venue-name">Vismaya / Pavithram Convention Centre</div>
+        <div class="venue-addr">Mulavana, Kundara, Kollam, Kerala</div>
+        <div class="venue-map">
+          <a href="https://maps.app.goo.gl/pU88SFgpaNZKguh79?g_st=ac" target="_blank" rel="noopener">
+            <img src="map2.png" alt="Convention Centre Map" loading="lazy">
+          </a>
+        </div>
+        <a class="venue-btn" href="https://maps.app.goo.gl/pU88SFgpaNZKguh79?g_st=ac" target="_blank" rel="noopener">
+          <i data-lucide="map-pin"></i> Open in Google Maps
+        </a>
+      </div>
+    </section>
+
+    <!-- RSVP SECTION -->
+    <section class="rsvp" id="rsvp">
+      <div class="eyebrow light">Are You Attending?</div>
+      <h2>RSVP</h2>
+      <div class="divider light"><span class="line"></span><span class="gem"></span><span class="line"></span></div>
+      <p class="rsvp-lead">Please let us know if you will be joining us on our special day.</p>
+
+      <div class="rsvp-card">
+        <form id="rsvp-form" class="rsvp-form">
+          <div class="form-group">
+            <label for="rsvp-name">Your Full Name</label>
+            <input type="text" id="rsvp-name" name="name" placeholder="Enter your name" required>
+          </div>
+          <div class="form-group">
+            <label for="rsvp-attending">Will you attend?</label>
+            <select id="rsvp-attending" name="attending" required>
+              <option value="Joyfully Accepts">Joyfully Accepts</option>
+              <option value="Regretfully Declines">Regretfully Declines</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="rsvp-guests">Number of Guests</label>
+            <select id="rsvp-guests" name="guests">
+              <option value="1 Guest">1 Person</option>
+              <option value="2 Guests">2 Persons</option>
+              <option value="3+ Guests">3 or more Persons</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="rsvp-message">Wishes / Note (Optional)</label>
+            <textarea id="rsvp-message" name="message" rows="3" placeholder="Leave a message for the couple"></textarea>
+          </div>
+          <button type="submit" class="rsvp-submit-btn">Send RSVP</button>
+        </form>
+        <div id="rsvp-success" class="rsvp-success" style="display:none;">
+          <div class="rsvp-success-icon">✦</div>
+          <h3>Thank You!</h3>
+          <p id="rsvp-success-msg">Your response has been received. We look forward to celebrating with you!</p>
+          <button type="button" id="rsvp-reset-btn" class="rsvp-reset-btn">Submit Another RSVP</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY (COMMENTED OUT AS REQUESTED)
+    <section class="gallery">
+      <div class="eyebrow">Memories &amp; Moments</div>
+      <h2>Photo Gallery</h2>
+      <div class="divider"><span class="line"></span><span class="gem"></span><span class="line"></span></div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="gallery1.png" alt="Sanju &amp; Mary" loading="lazy">
+          <div class="gallery-overlay">
+            <span>Sanju &amp; Mary</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="bride.jpeg" alt="The Bride Mary" loading="lazy">
+          <div class="gallery-overlay">
+            <span>The Bride · Mary</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery2.png" alt="Cherished Moments" loading="lazy">
+          <div class="gallery-overlay">
+            <span>Cherished Moments</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    -->
+
+    <!-- PHOTO BANNER -->
+    <section class="photo-section">
+      <div class="photo-wrap">
+        <img src="couple.png" alt="Sanju and Mary Wedding Theme Painting">
+        <div class="photo-overlay">
+          <div class="photo-caption">Two hearts, one journey
+            <span class="amp2">Sanju &amp; Mary</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING -->
+    <section class="closing">
+      <div class="names">Sanju &amp; Mary</div>
+      <div class="date">Sunday, 27th December 2026</div>
+      <p class="msg">With Love &amp; Prayers,<br>we look forward to celebrating with you.</p>
+
+      <div class="tag">#SanjuWedsMary</div>
+      <div class="foot">Sanju &amp; Mary · December 2026</div>
+    </section>
+
+  </main>
+
+  <!-- Lightbox Modal for Gallery -->
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close" id="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img" alt="Gallery preview">
+    <div id="lightbox-caption" class="lightbox-caption"></div>
+  </div>
+
+  <!-- Custom Scripts -->
+  <script src="script.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+
+</html>
