@@ -96,71 +96,51 @@ h1, h2, h3 {
   fill: url(#crossGrad);
 }
 
-/* ===================== COVER / OPENING ANIMATION ===================== */
+/* ===================== COVER / VIDEO REVEAL ===================== */
 #cover {
   position: fixed;
   inset: 0;
   z-index: 999;
-  display: flex;
 }
 
-.fold {
-  width: 50%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
+/* ---- Phase 1: Still landing screen ---- */
+#cover-still {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background:
-    radial-gradient(ellipse at 25% 18%, rgba(197, 160, 89, 0.2), transparent 50%),
-    radial-gradient(ellipse at 75% 80%, rgba(251, 236, 233, 0.12), transparent 50%),
+    radial-gradient(ellipse at 25% 18%, rgba(197, 160, 89, 0.22), transparent 50%),
+    radial-gradient(ellipse at 75% 80%, rgba(251, 236, 233, 0.14), transparent 50%),
     linear-gradient(160deg, #5E1524 0%, #420D18 40%, #2A070F 75%, #380B14 100%);
-  transition: transform 1.15s cubic-bezier(.76, 0, .18, 1), opacity 1.15s ease;
+  transition: opacity 0.6s ease;
+}
+
+/* Name panels - left and right sides */
+.cover-panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+  padding: 7% 8%;
 }
 
-.fold.left {
-  border-right: 1px solid rgba(195, 154, 62, 0.4);
-  align-items: flex-end;
-}
-
-.fold.right {
-  align-items: flex-start;
-}
-
-.fold-inner {
-  width: 200%;
-  height: 100%;
-  position: relative;
-}
-
-.fold.left .fold-inner {
-  right: 0;
-}
-
-#cover.open .fold.left {
-  transform: translateX(-104%);
-}
-
-#cover.open .fold.right {
-  transform: translateX(104%);
-}
-
-#cover.open {
-  pointer-events: none;
-}
-
-#cover.hidden {
-  display: none;
-}
-
-.cover-top {
-  position: absolute;
-  top: 7%;
+.cover-panel.left-panel {
   left: 0;
+  border-right: 1px solid rgba(197, 160, 89, 0.35);
+  align-items: flex-end;
+  text-align: right;
+}
+
+.cover-panel.right-panel {
   right: 0;
-  text-align: center;
-  padding: 0 8%;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding-bottom: 9%;
 }
 
 .cover-arabic {
@@ -179,8 +159,7 @@ h1, h2, h3 {
   font-size: 13.5px;
   letter-spacing: 0.04em;
   line-height: 1.5;
-  max-width: 260px;
-  margin: 0 auto;
+  max-width: 220px;
 }
 
 .cover-verse-ref {
@@ -190,42 +169,65 @@ h1, h2, h3 {
   text-transform: uppercase;
   font-style: normal;
   font-size: 10.5px;
-  color: rgba(195, 154, 62, 0.8);
+  color: rgba(197, 160, 89, 0.8);
 }
 
-.cover-center {
+.cover-name-row {
+  margin-top: auto;
+  padding-top: 32px;
+}
+
+.cover-name-row .n {
+  font-family: 'Great Vibes', cursive;
+  font-size: 44px;
+  color: #F3E4C9;
+  line-height: 1;
+}
+
+.cover-name-row .r {
+  font-family: 'EB Garamond', serif;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-size: 10px;
+  color: rgba(197, 160, 89, 0.75);
+  margin-top: 6px;
+}
+
+/* Centre tap button */
+#tapToOpen {
   position: absolute;
   top: 50%;
-  left: 0;
-  right: 0;
-  transform: translateY(-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   z-index: 5;
   cursor: pointer;
+  user-select: none;
 }
 
 .seal {
   width: 92px;
   height: 92px;
   border-radius: 50%;
-  background: radial-gradient(circle at 40% 35%, rgba(195, 154, 62, 0.25), transparent 60%), rgba(195, 154, 62, 0.10);
-  border: 1px solid rgba(195, 154, 62, 0.55);
+  background: radial-gradient(circle at 40% 35%, rgba(197, 160, 89, 0.28), transparent 60%), rgba(197, 160, 89, 0.10);
+  border: 1px solid rgba(197, 160, 89, 0.55);
   display: flex;
   align-items: center;
   justify-content: center;
   animation: pulseRing 2.6s ease-in-out infinite;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+#tapToOpen:active .seal {
+  transform: scale(0.94);
 }
 
 @keyframes pulseRing {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(195, 154, 62, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 0 14px rgba(195, 154, 62, 0);
-  }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.3); }
+  50%       { box-shadow: 0 0 0 18px rgba(197, 160, 89, 0); }
 }
 
 .tap-label {
@@ -239,58 +241,75 @@ h1, h2, h3 {
 }
 
 @keyframes floatY {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(6px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
 }
 
-.cover-bottom {
+/* ---- Phase 2: Fullscreen video ---- */
+#cover-video {
   position: absolute;
-  bottom: 9%;
-  left: 0;
-  right: 0;
+  inset: 0;
+  background: #000;
   display: flex;
-  justify-content: space-between;
-  padding: 0 14%;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
 }
 
-.cover-name {
-  text-align: center;
+#cover-video.active {
+  opacity: 1;
+  pointer-events: all;
 }
 
-.fold.left .cover-bottom {
-  justify-content: flex-end;
-  padding-right: 8%;
+#reveal-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-.fold.right .cover-bottom {
-  justify-content: flex-start;
-  padding-left: 8%;
-}
-
-.cover-name .n {
-  font-family: 'Great Vibes', cursive;
-  font-size: 40px;
-  color: #F3E4C9;
-  line-height: 1;
-}
-
-.cover-name .r {
+/* Skip button */
+#skip-btn {
+  position: absolute;
+  bottom: 30px;
+  right: 28px;
+  background: rgba(42, 7, 15, 0.65);
+  border: 1px solid rgba(197, 160, 89, 0.55);
+  color: rgba(243, 228, 201, 0.9);
   font-family: 'EB Garamond', serif;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  font-size: 10px;
-  color: rgba(195, 154, 62, 0.75);
-  margin-top: 6px;
+  font-size: 12px;
+  padding: 10px 20px;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 2px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+#skip-btn:hover {
+  background: rgba(107, 29, 47, 0.8);
+  color: #F3E4C9;
+}
+
+/* Cover fade-out (when revealing) */
+#cover.revealing {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.9s ease;
+}
+
+#cover.hidden {
+  display: none;
 }
 
 /* ===================== MAIN CONTENT ===================== */
 main {
   opacity: 0;
-  transition: opacity 1s ease 0.3s;
+  transition: opacity 1s ease 0.4s;
 }
 
 main.show {

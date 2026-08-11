@@ -71,79 +71,72 @@
     </defs>
   </svg>
 
-  <!-- ============ COVER / OPENING ANIMATION ============ -->
+  <!-- ============ COVER / VIDEO REVEAL ============ -->
   <div id="cover">
-    <div class="fold left">
-      <div class="cover-top">
+
+    <!-- Phase 1: Still landing screen (shown before tap) -->
+    <div id="cover-still">
+      <!-- Decorative name panels -->
+      <div class="cover-panel left-panel">
         <div class="cover-arabic">℣</div>
-        <p class="cover-verse">“I will make a partner suitable for him.”
+        <p class="cover-verse">"I will make a partner suitable for him."
           <span class="cover-verse-ref">Genesis 2:18</span>
         </p>
-      </div>
-      <div class="cover-bottom">
-        <div class="cover-name text-right">
+        <div class="cover-name-row">
           <div class="n">Sanju</div>
           <div class="r">The Groom</div>
         </div>
       </div>
-    </div>
 
-    <div class="cover-center" id="tapToOpen">
-      <div class="seal">
-        <!-- Interlocked wedding rings -->
-        <svg viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:62px;height:38px;">
-          <defs>
-            <linearGradient id="ringGold1" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#F0D878" />
-              <stop offset="50%" stop-color="#C39A3E" />
-              <stop offset="100%" stop-color="#9A7428" />
-            </linearGradient>
-            <linearGradient id="ringGold2" x1="1" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#F0D878" />
-              <stop offset="50%" stop-color="#DCC07E" />
-              <stop offset="100%" stop-color="#A07830" />
-            </linearGradient>
-            <!-- clip left ring so it appears behind right ring at overlap -->
-            <clipPath id="clipLeft">
-              <rect x="0" y="0" width="38" height="40" />
-            </clipPath>
-            <!-- clip right ring so it appears in front at overlap -->
-            <clipPath id="clipRight">
-              <rect x="26" y="0" width="38" height="40" />
-            </clipPath>
-          </defs>
-
-          <!-- Left ring (behind) — clipped to left side -->
-          <g clip-path="url(#clipLeft)">
-            <circle cx="24" cy="20" r="14.5" stroke="url(#ringGold1)" stroke-width="4" fill="none" />
-          </g>
-          <!-- Right ring (front) — full -->
-          <circle cx="40" cy="20" r="14.5" stroke="url(#ringGold2)" stroke-width="4" fill="none" />
-          <!-- Left ring front arc (overlapping portion in front) -->
-          <g clip-path="url(#clipRight)">
-            <circle cx="24" cy="20" r="14.5" stroke="url(#ringGold1)" stroke-width="4" fill="none" />
-          </g>
-
-          <!-- Small diamond on left ring top -->
-          <polygon points="24,3.5 26,6 24,8.5 22,6" fill="#F3E4C9" opacity="0.95" />
-          <polygon points="24,3.5 26,6 24,8.5 22,6" fill="none" stroke="rgba(195,154,62,0.6)" stroke-width="0.5" />
-        </svg>
-      </div>
-      <div class="tap-label">Tap to open</div>
-    </div>
-
-    <div class="fold right">
-      <div class="cover-top" style="visibility:hidden">
-        <div class="cover-arabic">℣</div>
-        <p class="cover-verse">placeholder</p>
-      </div>
-      <div class="cover-bottom">
-        <div class="cover-name">
+      <div class="cover-panel right-panel">
+        <div class="cover-name-row">
           <div class="n">Mary</div>
           <div class="r">The Bride</div>
         </div>
       </div>
+
+      <!-- Centre tap button -->
+      <div id="tapToOpen">
+        <div class="seal">
+          <svg viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:62px;height:38px;">
+            <defs>
+              <linearGradient id="ringGold1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#F0D878" />
+                <stop offset="50%" stop-color="#C39A3E" />
+                <stop offset="100%" stop-color="#9A7428" />
+              </linearGradient>
+              <linearGradient id="ringGold2" x1="1" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#F0D878" />
+                <stop offset="50%" stop-color="#DCC07E" />
+                <stop offset="100%" stop-color="#A07830" />
+              </linearGradient>
+              <clipPath id="clipLeft"><rect x="0" y="0" width="38" height="40" /></clipPath>
+              <clipPath id="clipRight"><rect x="26" y="0" width="38" height="40" /></clipPath>
+            </defs>
+            <g clip-path="url(#clipLeft)">
+              <circle cx="24" cy="20" r="14.5" stroke="url(#ringGold1)" stroke-width="4" fill="none" />
+            </g>
+            <circle cx="40" cy="20" r="14.5" stroke="url(#ringGold2)" stroke-width="4" fill="none" />
+            <g clip-path="url(#clipRight)">
+              <circle cx="24" cy="20" r="14.5" stroke="url(#ringGold1)" stroke-width="4" fill="none" />
+            </g>
+            <polygon points="24,3.5 26,6 24,8.5 22,6" fill="#F3E4C9" opacity="0.95" />
+            <polygon points="24,3.5 26,6 24,8.5 22,6" fill="none" stroke="rgba(195,154,62,0.6)" stroke-width="0.5" />
+          </svg>
+        </div>
+        <div class="tap-label">Open Invitation</div>
+      </div>
     </div>
+
+    <!-- Phase 2: Fullscreen video player (hidden until tapped) -->
+    <div id="cover-video">
+      <video id="reveal-video" playsinline preload="metadata">
+        <source src="vedio.mp4" type="video/mp4" />
+      </video>
+      <!-- Skip button -->
+      <button id="skip-btn">Skip &rsaquo;</button>
+    </div>
+
   </div>
 
   <!-- ============ MAIN CONTENT ============ -->

@@ -1,54 +1,84 @@
-// ---- Opening (letter-unfold) animation ----
-const cover = document.getElementById('cover');
-const main = document.getElementById('main');
+// ---- Video Reveal Opening ----
+const cover      = document.getElementById('cover');
+const coverStill = document.getElementById('cover-still');
+const coverVideo = document.getElementById('cover-video');
+const video      = document.getElementById('reveal-video');
+const skipBtn    = document.getElementById('skip-btn');
+const main       = document.getElementById('main');
 document.documentElement.classList.add('locked');
 
 // ---- Background music setup ----
-const audio = document.getElementById('bg-music');
-const muteBtn = document.getElementById('mute-btn');
-const iconSound = document.getElementById('icon-sound');
-const iconMuted = document.getElementById('icon-muted');
+const audio      = document.getElementById('bg-music');
+const muteBtn    = document.getElementById('mute-btn');
+const iconSound  = document.getElementById('icon-sound');
+const iconMuted  = document.getElementById('icon-muted');
 
-let musicStarted = false; // becomes true only once play() actually succeeds
-let opened = false;       // guards against openInvite() running more than once
+let musicStarted = false;
+let opened       = false;
 
-// Single source of truth for starting music. Safe to call repeatedly —
-// it only marks success once the promise actually resolves, so an early
-// failed attempt (e.g. a gesture that doesn't count on some browsers)
-// never blocks a later, better attempt.
 function tryPlayMusic() {
   if (musicStarted) return;
   audio.volume = 0.45;
   audio.play().then(() => {
     musicStarted = true;
-  }).catch(() => {
-    // still blocked — a later user gesture will try again
+  }).catch(() => {});
+}
+
+// Called once the video finishes or user skips
+function revealInvite() {
+  if (opened) return;
+  opened = true;
+
+  // Pause video and fade the whole cover out
+  video.pause();
+  cover.classList.add('revealing');
+
+  // Unlock scroll & show main content underneath
+  document.documentElement.classList.remove('locked');
+  main.classList.add('show');
+
+  // Remove cover from DOM after fade completes
+  setTimeout(() => {
+    cover.classList.add('hidden');
+  }, 950);
+}
+
+// Phase 1 → Phase 2: tap reveals the video
+function startVideo() {
+  if (opened) return;
+
+  // This is a trusted gesture — best chance to start audio
+  tryPlayMusic();
+
+  // Fade still screen out, fade video layer in
+  coverStill.style.opacity = '0';
+  coverStill.style.pointerEvents = 'none';
+  coverVideo.classList.add('active');
+
+  // Play the video
+  video.play().catch(() => {
+    // If video fails to play (e.g. unsupported), skip straight to invite
+    revealInvite();
   });
 }
 
-function openInvite() {
-  if (opened) return; // prevent double-fire from bubbling touch/click events
-  opened = true;
-
-  cover.classList.add('open');
-  main.classList.add('show');
-  document.documentElement.classList.remove('locked');
-  setTimeout(() => {
-    cover.classList.add('hidden');
-  }, 1250);
-
-  // This tap is a guaranteed trusted gesture — best chance for audio to start
-  tryPlayMusic();
-}
-
-// Only one listener needed on the outer cover — tapToOpen is inside it,
-// so a tap anywhere on the cover (including the seal) already bubbles here.
-cover.addEventListener('click', openInvite);
-cover.addEventListener('touchend', (e) => {
-  if (e.target.closest('#mute-btn')) return; // let the mute button handle its own taps
+// Tap / click on the still landing screen
+document.getElementById('tapToOpen').addEventListener('click', startVideo);
+document.getElementById('tapToOpen').addEventListener('touchend', (e) => {
   e.preventDefault();
-  openInvite();
+  startVideo();
 }, { passive: false });
+
+// Video ends → reveal invite
+video.addEventListener('ended', revealInvite);
+
+// Skip button
+skipBtn.addEventListener('click', revealInvite);
+skipBtn.addEventListener('touchend', (e) => {
+  e.preventDefault();
+  revealInvite();
+}, { passive: false });
+
 
 // ---- Countdown timer ----
 // Target date: Wedding on December 27, 2026 at 11:00 AM IST (UTC+5:30)
