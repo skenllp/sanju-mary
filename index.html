@@ -11,7 +11,7 @@
   <!-- Open Graph -->
   <meta property="og:title" content="Sanju &amp; Pretty — Wedding Invitation">
   <meta property="og:description"
-    content="Wedding: 27th Dec 2026 @ St. Thomas Orthodox Church, Kundara (Valiyapally) & Reception @ Vismaya Convention Centre, Mulavana. 'I will make a partner suitable for him.' — Genesis 2:18">
+    content="Wedding: 27th Dec 2026 @ St. Thomas Orthodox Church, (Valiyapally), Kundara & Reception @ Pavithram Convention Centre, Mulavana. 'I will make a partner suitable for him.' — Genesis 2:18">
   <meta property="og:image" content="https://sanju-mary.vercel.app/og.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:url" content="https://sanju-mary.vercel.app/">
@@ -74,62 +74,9 @@
   <!-- ============ COVER / VIDEO REVEAL ============ -->
   <div id="cover">
 
-    <!-- Phase 1: Still landing screen (shown before tap) -->
-    <div id="cover-still">
-      <!-- Decorative name panels -->
-      <div class="cover-panel left-panel"> 
-        <p class="cover-verse">"I will make a partner suitable for him."
-          <span class="cover-verse-ref">Genesis 2:18</span>
-        </p>
-        <div class="cover-name-row">
-          <div class="n">Sanju</div>
-          <div class="r">The Groom</div>
-        </div>
-      </div>
-
-      <div class="cover-panel right-panel">
-        <div class="cover-name-row">
-          <div class="n">Mary</div>
-          <div class="r">The Bride</div>
-        </div>
-      </div>
-
-      <!-- Centre tap button -->
-      <div id="tapToOpen">
-        <div class="seal">
-          <svg viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:62px;height:38px;">
-            <defs>
-              <linearGradient id="ringGold1" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#F0D878" />
-                <stop offset="50%" stop-color="#C39A3E" />
-                <stop offset="100%" stop-color="#9A7428" />
-              </linearGradient>
-              <linearGradient id="ringGold2" x1="1" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#F0D878" />
-                <stop offset="50%" stop-color="#DCC07E" />
-                <stop offset="100%" stop-color="#A07830" />
-              </linearGradient>
-              <clipPath id="clipLeft"><rect x="0" y="0" width="38" height="40" /></clipPath>
-              <clipPath id="clipRight"><rect x="26" y="0" width="38" height="40" /></clipPath>
-            </defs>
-            <g clip-path="url(#clipLeft)">
-              <circle cx="24" cy="20" r="14.5" stroke="url(#ringGold1)" stroke-width="4" fill="none" />
-            </g>
-            <circle cx="40" cy="20" r="14.5" stroke="url(#ringGold2)" stroke-width="4" fill="none" />
-            <g clip-path="url(#clipRight)">
-              <circle cx="24" cy="20" r="14.5" stroke="url(#ringGold1)" stroke-width="4" fill="none" />
-            </g>
-            <polygon points="24,3.5 26,6 24,8.5 22,6" fill="#F3E4C9" opacity="0.95" />
-            <polygon points="24,3.5 26,6 24,8.5 22,6" fill="none" stroke="rgba(195,154,62,0.6)" stroke-width="0.5" />
-          </svg>
-        </div>
-        <div class="tap-label">Open Invitation</div>
-      </div>
-    </div>
-
-    <!-- Phase 2: Fullscreen video player (hidden until tapped) -->
-    <div id="cover-video">
-      <video id="reveal-video" playsinline preload="metadata" muted>
+    <!-- Fullscreen video intro player (plays directly) -->
+    <div id="cover-video" class="active">
+      <video id="reveal-video" playsinline autoplay muted preload="auto">
         <source src="video.mp4" type="video/mp4" />
       </video>
       <!-- Skip button -->
@@ -237,7 +184,7 @@
             <span class="ic"><i data-lucide="map-pin"></i></span>
             <div>
               <div class="t1">St. Thomas Orthodox Church</div>
-              <div class="t2">Kundara (Valiyapally)</div>
+              <div class="t2">(Valiyapally), Kundara</div>
             </div>
           </div>
         </div>
@@ -272,7 +219,7 @@
       <div class="venue-card">
         <div class="venue-tag">✦ Wedding Ceremony Venue ✦</div>
         <div class="venue-name">St. Thomas Orthodox Church</div>
-        <div class="venue-addr">Kundara (Valiyapally), Kollam, Kerala</div>
+        <div class="venue-addr">(Valiyapally), Kundara, Kollam, Kerala</div>
         <div class="venue-map">
           <a href="https://maps.app.goo.gl/BAikkwzT7AKQpUUw5?g_st=ac" target="_blank" rel="noopener">
             <img src="map1.png" alt="St. Thomas Orthodox Church Map" loading="lazy">
@@ -286,7 +233,7 @@
       <!-- Reception Venue Card -->
       <div class="venue-card">
         <div class="venue-tag">✦ Reception Venue ✦</div>
-        <div class="venue-name">Vismaya / Pavithram Convention Centre</div>
+        <div class="venue-name">Pavithram Convention Centre</div>
         <div class="venue-addr">Mulavana, Kundara, Kollam, Kerala</div>
         <div class="venue-map">
           <a href="https://maps.app.goo.gl/pU88SFgpaNZKguh79?g_st=ac" target="_blank" rel="noopener">
@@ -321,9 +268,11 @@
           <div class="form-group">
             <label for="rsvp-guests">Number of Guests</label>
             <select id="rsvp-guests" name="guests">
-              <option value="1 Guest">1 Person</option>
-              <option value="2 Guests">2 Persons</option>
-              <option value="3+ Guests">3 or more Persons</option>
+              <option value="1 Person">1 Person</option>
+              <option value="2 Persons">2 Persons</option>
+              <option value="3 Persons">3 Persons</option>
+              <option value="4 Persons">4 Persons</option>
+              <option value="5 or more Persons">5 or more Persons</option>
             </select>
           </div>
           <div class="form-group">

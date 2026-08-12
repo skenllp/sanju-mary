@@ -1,6 +1,5 @@
 // ---- Video Reveal Opening ----
 const cover      = document.getElementById('cover');
-const coverStill = document.getElementById('cover-still');
 const coverVideo = document.getElementById('cover-video');
 const video      = document.getElementById('reveal-video');
 const skipBtn    = document.getElementById('skip-btn');
@@ -30,54 +29,54 @@ function revealInvite() {
   opened = true;
 
   // Pause video and fade the whole cover out
-  video.pause();
-  cover.classList.add('revealing');
+  if (video) video.pause();
+  if (cover) cover.classList.add('revealing');
 
   // Unlock scroll & show main content underneath
   document.documentElement.classList.remove('locked');
-  main.classList.add('show');
+  if (main) main.classList.add('show');
 
   // Remove cover from DOM after fade completes
   setTimeout(() => {
-    cover.classList.add('hidden');
+    if (cover) cover.classList.add('hidden');
   }, 950);
 }
 
-// Phase 1 → Phase 2: tap reveals the video
-function startVideo() {
-  if (opened) return;
-
-  // This is a trusted gesture — best chance to start audio
-  tryPlayMusic();
-
-  // Fade still screen out, fade video layer in
-  coverStill.style.opacity = '0';
-  coverStill.style.pointerEvents = 'none';
-  coverVideo.classList.add('active');
-
-  // Play the video
-  video.play().catch(() => {
-    // If video fails to play (e.g. unsupported), skip straight to invite
-    revealInvite();
-  });
+// Play video intro directly on load
+function startVideoIntro() {
+  if (!video) return;
+  const playPromise = video.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(() => {
+      // If video fails to autoplay (e.g. strict browser policy), skip to invite content
+      revealInvite();
+    });
+  }
 }
 
-// Tap / click on the still landing screen
-document.getElementById('tapToOpen').addEventListener('click', startVideo);
-document.getElementById('tapToOpen').addEventListener('touchend', (e) => {
-  e.preventDefault();
-  startVideo();
-}, { passive: false });
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', startVideoIntro);
+} else {
+  startVideoIntro();
+}
 
 // Video ends → reveal invite
-video.addEventListener('ended', revealInvite);
+if (video) {
+  video.addEventListener('ended', revealInvite);
+}
 
 // Skip button
-skipBtn.addEventListener('click', revealInvite);
-skipBtn.addEventListener('touchend', (e) => {
-  e.preventDefault();
-  revealInvite();
-}, { passive: false });
+if (skipBtn) {
+  skipBtn.addEventListener('click', () => {
+    tryPlayMusic();
+    revealInvite();
+  });
+  skipBtn.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    tryPlayMusic();
+    revealInvite();
+  }, { passive: false });
+}
 
 
 // ---- Countdown timer ----
