@@ -74,11 +74,24 @@
   <!-- ============ COVER / VIDEO REVEAL ============ -->
   <div id="cover">
 
-    <!-- Fullscreen video intro player (plays directly) -->
+    <!-- Fullscreen video intro player with Open Invitation button directly on video -->
     <div id="cover-video" class="active">
-      <video id="reveal-video" playsinline autoplay muted preload="auto">
+      <video id="reveal-video" playsinline preload="auto">
         <source src="video.mp4" type="video/mp4" />
       </video>
+
+      <!-- Open Invitation Button on top of video -->
+      <button id="tapToOpen" aria-label="Open Invitation">
+        <div class="seal">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 13V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h9"></path>
+            <polyline points="22,7 12,13 2,7"></polyline>
+            <polygon points="19 16 23 19 19 22 19 16" fill="currentColor"></polygon>
+          </svg>
+        </div>
+        <span class="tap-label">Open Invitation</span>
+      </button>
+
       <!-- Skip button -->
       <button id="skip-btn">Skip &rsaquo;</button>
     </div>
@@ -96,7 +109,11 @@
       <p class="hero-verse">“I will make a partner suitable for him.”<br>
         <span class="hero-verse-ref">— Genesis 2:18</span>
       </p>
-      <h1 class="hero-names">Sanju Jacob Thomas &amp; Pretty Mary Thomas</h1>
+      <h1 class="hero-names">
+        <span class="hero-groom">Sanju Jacob Thomas</span>
+        <span class="hero-amp">&amp;</span>
+        <span class="hero-bride">Pretty Mary Thomas</span>
+      </h1>
       <div class="hero-date">Sunday, 27th December 2026</div>
       <p class="hero-tag">are uniting in Holy Matrimony, and we request your presence &amp; blessings</p>
       <div class="scroll-cue"><span>Scroll</span>

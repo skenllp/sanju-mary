@@ -1,26 +1,66 @@
-// ---- Video Reveal Opening ----
-const cover      = document.getElementById('cover');
-const coverVideo = document.getElementById('cover-video');
-const video      = document.getElementById('reveal-video');
-const skipBtn    = document.getElementById('skip-btn');
-const main       = document.getElementById('main');
+// ---- Video Reveal & Cover Opening ----
+const cover        = document.getElementById('cover');
+const coverStill   = document.getElementById('cover-still');
+const coverVideo   = document.getElementById('cover-video');
+const tapToOpenBtn = document.getElementById('tapToOpen');
+const video        = document.getElementById('reveal-video');
+const skipBtn      = document.getElementById('skip-btn');
+const main         = document.getElementById('main');
+
 document.documentElement.classList.add('locked');
 
 // ---- Background music setup ----
-const audio      = document.getElementById('bg-music');
-const muteBtn    = document.getElementById('mute-btn');
-const iconSound  = document.getElementById('icon-sound');
-const iconMuted  = document.getElementById('icon-muted');
+const audio     = document.getElementById('bg-music');
+const muteBtn   = document.getElementById('mute-btn');
+const iconSound = document.getElementById('icon-sound');
+const iconMuted = document.getElementById('icon-muted');
 
 let musicStarted = false;
 let opened       = false;
 
 function tryPlayMusic() {
-  if (musicStarted) return;
+  if (musicStarted || !audio) return;
   audio.volume = 0.45;
   audio.play().then(() => {
     musicStarted = true;
-  }).catch(() => {});
+    if (iconSound && iconMuted) {
+      iconSound.style.display = '';
+      iconMuted.style.display = 'none';
+    }
+  }).catch((err) => {
+    console.log('Audio play blocked/failed:', err);
+  });
+}
+
+// Ensure video is paused initially at the start
+if (video) {
+  video.pause();
+  video.currentTime = 0;
+}
+
+// Function to handle "Open Invitation" button click
+function openInvitation() {
+  // 1. Play background music on user gesture
+  tryPlayMusic();
+
+  // 2. Fade out the Open Invitation button overlay
+  if (tapToOpenBtn) {
+    tapToOpenBtn.classList.add('fade-out');
+  }
+
+  // 3. Play video intro from the beginning
+  if (video) {
+    video.currentTime = 0;
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch((err) => {
+        console.log('Video play error:', err);
+        revealInvite();
+      });
+    }
+  } else {
+    revealInvite();
+  }
 }
 
 // Called once the video finishes or user skips
@@ -42,22 +82,12 @@ function revealInvite() {
   }, 950);
 }
 
-// Play video intro directly on load
-function startVideoIntro() {
-  if (!video) return;
-  const playPromise = video.play();
-  if (playPromise !== undefined) {
-    playPromise.catch(() => {
-      // If video fails to autoplay (e.g. strict browser policy), skip to invite content
-      revealInvite();
-    });
-  }
-}
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', startVideoIntro);
-} else {
-  startVideoIntro();
+// Attach Open Invitation button handler
+if (tapToOpenBtn) {
+  tapToOpenBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    openInvitation();
+  });
 }
 
 // Video ends → reveal invite
@@ -65,14 +95,16 @@ if (video) {
   video.addEventListener('ended', revealInvite);
 }
 
-// Skip button
+// Skip button handler
 if (skipBtn) {
-  skipBtn.addEventListener('click', () => {
+  skipBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
     tryPlayMusic();
     revealInvite();
   });
   skipBtn.addEventListener('touchend', (e) => {
     e.preventDefault();
+    e.stopPropagation();
     tryPlayMusic();
     revealInvite();
   }, { passive: false });
